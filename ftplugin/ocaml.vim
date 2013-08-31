@@ -389,7 +389,7 @@ endfunction
       set hidden
       let s:current_buf = bufname('%')
       if bufloaded(b:annot_file_path)
-        silent exe 'keepj keepalt' 'buffer' s:Fnameescape(b:annot_file_path)
+        silent exe 'keepj keepalt' 'buffer' resolve(s:Fnameescape(b:annot_file_path))
       else
         silent exe 'keepj keepalt' 'view' s:Fnameescape(b:annot_file_path)
       endif
