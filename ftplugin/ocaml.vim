@@ -298,7 +298,8 @@ endfunction
     "                       path to the build directory even if this one is
     "                       not named '_build'
   function! s:Locate_annotation()
-    if !b:annotation_file_located
+    " This in order to locate the .annot file only once
+    if !exists("b:annotation_file_located")
 
       silent exe 'cd' s:Fnameescape(expand('%:p:h'))
 
@@ -371,9 +372,6 @@ endfunction
       let b:annotation_file_located = 1
     endif
   endfun
-
-  " This in order to locate the .annot file only once
-  let b:annotation_file_located = 0
 
 " 2. Finding the type information in the annotation file
   
