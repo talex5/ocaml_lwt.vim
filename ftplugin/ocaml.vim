@@ -406,7 +406,7 @@ endfunction
       "   This also handles the modification date of the .annot file, eg. after a 
       "   compilation.
     function! s:Load_annotation()
-      if bufloaded(b:annot_file_path) && b:annot_file_last_mod < getftime(b:annot_file_path)
+      if bufloaded(b:annot_file_path) && (!exists("b:annot_file_last_mod") || b:annot_file_last_mod < getftime(b:annot_file_path))
         call s:Enter_annotation_buffer()
         silent exe "bunload"
         call s:Exit_annotation_buffer()
